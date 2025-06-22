@@ -21,7 +21,8 @@ public class stage_5 {
         question3();
 
         // Question 4: Object comparison and equals
-        question4();        // Question 5: Dynamic array operations
+        question4();
+        // Question 5: Dynamic array operations
         question5();
         
         // Question 6: Inheritance and super constructor
@@ -29,7 +30,7 @@ public class stage_5 {
         
         // Question 7: Generic classes with inheritance
         question7();
-          // Question 8: Method validation and encapsulation
+        // Question 8: Method validation and encapsulation
         question8();
         
         // Question 9: Interface implementation with shapes

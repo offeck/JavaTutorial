@@ -22,7 +22,8 @@ public class stage_6 {
         question3();
 
         // Question 4: Linked list operations
-        question4();        // Question 5: Interface inheritance and generic wildcards
+        question4();
+        // Question 5: Interface inheritance and generic wildcards
         question5();
         
         // Question 6: Binary Tree Operations
