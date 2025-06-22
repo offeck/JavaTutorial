@@ -22,10 +22,17 @@ public class stage_6 {
         question3();
 
         // Question 4: Linked list operations
-        question4();
-
-        // Question 5: Interface inheritance and generic wildcards
+        question4();        // Question 5: Interface inheritance and generic wildcards
         question5();
+        
+        // Question 6: Binary Tree Operations
+        question6();
+        
+        // Question 7: Stack Implementation
+        question7();
+        
+        // Question 8: Binary Search Tree
+        question8();
 
         // Show final results
         showFinalResults();
@@ -291,6 +298,186 @@ public class stage_6 {
         }
     }
 
+    private static void question6() {
+        totalQuestions++;
+        System.out.println("\nQUESTION 6: Binary Tree Operations");
+        System.out.println("What will this code output?");
+        System.out.println("---");
+        System.out.println("class BinaryNode<T> {");
+        System.out.println("    protected T data;");
+        System.out.println("    protected BinaryNode<T> left, right;");
+        System.out.println("    public BinaryNode(T element) { this.data = element; }");
+        System.out.println("    public T getData() { return data; }");
+        System.out.println("    public BinaryNode<T> getLeft() { return left; }");
+        System.out.println("    public BinaryNode<T> getRight() { return right; }");
+        System.out.println("    public void setLeft(BinaryNode<T> left) { this.left = left; }");
+        System.out.println("    public void setRight(BinaryNode<T> right) { this.right = right; }");
+        System.out.println("}");
+        System.out.println("// Usage:");
+        System.out.println("BinaryNode<String> root = new BinaryNode<>(\"A\");");
+        System.out.println("root.setLeft(new BinaryNode<>(\"B\"));");
+        System.out.println("root.setRight(new BinaryNode<>(\"C\"));");
+        System.out.println("System.out.println(root.getLeft().getData());");
+        System.out.println("---");
+        
+        System.out.print("Your guess: ");
+        String userGuess = scanner.nextLine().trim();
+        
+        // Actual execution from BinaryNode.java logic
+        TestBinaryNode<String> root = new TestBinaryNode<>("A");
+        root.setLeft(new TestBinaryNode<>("B"));
+        root.setRight(new TestBinaryNode<>("C"));
+        String result = root.getLeft().getData();
+        String actualOutput = result;
+        
+        checkAnswer(userGuess, actualOutput, 
+            "Explanation: Binary tree with root 'A', left child 'B', right child 'C'. root.getLeft().getData() returns 'B'.");
+    }
+    
+    // Helper class for binary tree simulation
+    static class TestBinaryNode<T> {
+        protected T data;
+        protected TestBinaryNode<T> left, right;
+        public TestBinaryNode(T element) { this.data = element; }
+        public T getData() { return data; }
+        public TestBinaryNode<T> getLeft() { return left; }
+        public TestBinaryNode<T> getRight() { return right; }
+        public void setLeft(TestBinaryNode<T> left) { this.left = left; }
+        public void setRight(TestBinaryNode<T> right) { this.right = right; }
+    }
+    
+    private static void question7() {
+        totalQuestions++;
+        System.out.println("\nQUESTION 7: Stack Implementation");
+        System.out.println("What will this code output?");
+        System.out.println("---");
+        System.out.println("interface Stack<T> {");
+        System.out.println("    public boolean isEmpty();");
+        System.out.println("    public T peek();");
+        System.out.println("    public T pop();");
+        System.out.println("    public void push(T element);");
+        System.out.println("}");
+        System.out.println("class StackArray<T> implements Stack<T> {");
+        System.out.println("    private List<T> array = new ArrayList<>();");
+        System.out.println("    public boolean isEmpty() { return array.isEmpty(); }");
+        System.out.println("    public void push(T element) { array.add(element); }");
+        System.out.println("    public T pop() { return array.remove(array.size()-1); }");
+        System.out.println("    public T peek() { return array.get(array.size()-1); }");
+        System.out.println("}");
+        System.out.println("// Usage:");
+        System.out.println("Stack<Integer> stack = new StackArray<>();");
+        System.out.println("stack.push(10); stack.push(20); stack.push(30);");
+        System.out.println("stack.pop();");
+        System.out.println("System.out.println(stack.peek());");
+        System.out.println("---");
+        
+        System.out.print("Your guess: ");
+        String userGuess = scanner.nextLine().trim();
+        
+        // Actual execution from Stack.java logic
+        TestStack<Integer> stack = new TestStackArray<>();
+        stack.push(10);
+        stack.push(20); 
+        stack.push(30);
+        stack.pop(); // removes 30
+        Integer result = stack.peek(); // returns 20
+        String actualOutput = String.valueOf(result);
+        
+        checkAnswer(userGuess, actualOutput, 
+            "Explanation: Stack follows LIFO (Last In, First Out). After pushing 10,20,30 and popping once, peek() returns 20.");
+    }
+    
+    // Helper interface and class for stack simulation
+    interface TestStack<T> {
+        public boolean isEmpty();
+        public T peek();
+        public T pop();
+        public void push(T element);
+    }
+    
+    static class TestStackArray<T> implements TestStack<T> {
+        private java.util.List<T> array = new java.util.ArrayList<>();
+        public boolean isEmpty() { return array.isEmpty(); }
+        public void push(T element) { array.add(element); }
+        public T pop() { return array.remove(array.size()-1); }
+        public T peek() { return array.get(array.size()-1); }
+    }
+    
+    private static void question8() {
+        totalQuestions++;
+        System.out.println("\nQUESTION 8: Binary Search Tree Properties");
+        System.out.println("What will this code output?");
+        System.out.println("---");
+        System.out.println("class BST {");
+        System.out.println("    private Node root;");
+        System.out.println("    class Node {");
+        System.out.println("        int data; Node left, right;");
+        System.out.println("        Node(int data) { this.data = data; }");
+        System.out.println("    }");
+        System.out.println("    public void insert(int value) {");
+        System.out.println("        root = insertRec(root, value);");
+        System.out.println("    }");
+        System.out.println("    private Node insertRec(Node root, int value) {");
+        System.out.println("        if (root == null) return new Node(value);");
+        System.out.println("        if (value < root.data) root.left = insertRec(root.left, value);");
+        System.out.println("        else root.right = insertRec(root.right, value);");
+        System.out.println("        return root;");
+        System.out.println("    }");
+        System.out.println("    public int findMin() { return findMinRec(root); }");
+        System.out.println("    private int findMinRec(Node node) {");
+        System.out.println("        return node.left == null ? node.data : findMinRec(node.left);");
+        System.out.println("    }");
+        System.out.println("}");
+        System.out.println("// Usage:");
+        System.out.println("BST bst = new BST();");
+        System.out.println("bst.insert(50); bst.insert(30); bst.insert(70); bst.insert(20);");
+        System.out.println("System.out.println(bst.findMin());");
+        System.out.println("---");
+        
+        System.out.print("Your guess: ");
+        String userGuess = scanner.nextLine().trim();
+        
+        // Actual execution from BinarySearchTree.java logic
+        TestBST bst = new TestBST();
+        bst.insert(50);
+        bst.insert(30);
+        bst.insert(70);
+        bst.insert(20);
+        int result = bst.findMin();
+        String actualOutput = String.valueOf(result);
+        
+        checkAnswer(userGuess, actualOutput, 
+            "Explanation: BST property: left < root < right. Values inserted: 50,30,70,20. Minimum is always leftmost: 20.");
+    }
+    
+    // Helper class for BST simulation
+    static class TestBST {
+        private TestBSTNode root;
+        
+        static class TestBSTNode {
+            int data;
+            TestBSTNode left, right;
+            TestBSTNode(int data) { this.data = data; }
+        }
+        
+        public void insert(int value) {
+            root = insertRec(root, value);
+        }
+        
+        private TestBSTNode insertRec(TestBSTNode root, int value) {
+            if (root == null) return new TestBSTNode(value);
+            if (value < root.data) root.left = insertRec(root.left, value);
+            else root.right = insertRec(root.right, value);
+            return root;
+        }
+        
+        public int findMin() { return findMinRec(root); }
+        
+        private int findMinRec(TestBSTNode node) {
+            return node.left == null ? node.data : findMinRec(node.left);
+        }
+    }
+
     private static void checkAnswer(String userGuess, String actualOutput, String explanation) {
         System.out.println("\nActual output: " + actualOutput);
 
@@ -319,26 +506,30 @@ public class stage_6 {
         } else {
             System.out.println(
                     "🤔 Keep practicing! Advanced OOP is challenging - you're tackling professional-level concepts!");
-        }
-
-        System.out.println("\nAdvanced concepts covered in Stage 6:");
+        }        System.out.println("\nAdvanced concepts covered in Stage 6:");
         System.out.println("• Inheritance hierarchies and super() calls");
         System.out.println("• Method overriding and dynamic dispatch (polymorphism)");
         System.out.println("• Generic classes and type parameters");
         System.out.println("• Generic collections and data structures");
         System.out.println("• Interface inheritance and implementation");
         System.out.println("• Advanced object composition and design patterns");
+        System.out.println("• Binary tree operations and node relationships");
+        System.out.println("• Stack implementation and LIFO operations");
+        System.out.println("• Binary Search Tree properties and algorithms");
 
-        System.out.println("\nAdvanced OOP Debugging Tips:");
+        System.out.println("\nAdvanced OOP & Data Structure Debugging Tips:");
         System.out.println("• Understand the difference between compile-time and runtime types");
         System.out.println("• Trace method calls through inheritance hierarchies");
         System.out.println("• Pay attention to which version of an overridden method is called");
         System.out.println("• Remember that generics provide compile-time type safety");
         System.out.println("• Follow object references through linked structures");
         System.out.println("• Understand interface contracts vs. implementation details");
+        System.out.println("• Visualize tree structures and node relationships");
+        System.out.println("• Remember LIFO for stacks and BST ordering properties");
+        System.out.println("• Practice tracing recursive tree operations");
 
-        System.out.println("\nThese advanced patterns are from your OOP folder!");
-        System.out.println("Explore: Square.java, OrderedPair.java, LinkedList.java, Link.java, List.java");
+        System.out.println("\nThese advanced patterns are from your OOP and data structure folders!");
+        System.out.println("Explore: Square.java, OrderedPair.java, LinkedList.java, BinaryNode.java, Stack.java, BinarySearchTree.java");
         System.out.println("\nYou have now mastered the complete Java programming spectrum!");
         System.out.println("Your journey: Basic Java → Algorithms → Functions → Recursion → OOP → Advanced OOP");
         System.out.println("\n🚀 You're ready for enterprise Java development and advanced software engineering!");
