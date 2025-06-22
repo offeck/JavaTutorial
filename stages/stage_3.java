@@ -5,44 +5,42 @@ public class stage_3 {
     private static int score = 0;
     private static int totalQuestions = 0;
 
-    public static void main(String[]        System.out.println("    while (j > 0 && array[j-1] > value) {");
-        System.out.println("        array[j] = array[j-1];");
-        System.out.println("        j--;");
-        System.out.println("    }");gs) {
+    public static void main(String[] args) {
         System.out.println("=== JAVA DEBUGGING GAME - STAGE 3 ===");
         System.out.println("Welcome to Stage 3: Functions, Sorting & Strings!");
-        System.out.println("This stage focuses on understanding function calls, array algorithms, and string operations.");
+        System.out.println(
+                "This stage focuses on understanding function calls, array algorithms, and string operations.");
         System.out.println("Let's test your advanced code comprehension skills!\n");
-        
+
         // Question 1: String character counting
         question1();
-        
+
         // Question 2: Cumulative sum algorithm
         question2();
-        
+
         // Question 3: Method overloading
         question3();
-        
+
         // Question 4: Binary search algorithm
         question4();
-          // Question 5: 2D array copying
+        // Question 5: 2D array copying
         question5();
-        
+
         // Question 6: Insertion sort algorithm
         question6();
-        
+
         // Question 7: Caesar cipher encryption
         question7();
-        
+
         // Question 8: Roman numeral conversion
         question8();
-        
+
         // Question 9: Base conversion (hexadecimal)
         question9();
-        
+
         // Question 10: Selection sort with helper methods
         question10();
-        
+
         // Show final results
         showFinalResults();
     }
