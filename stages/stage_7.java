@@ -55,9 +55,10 @@ public class stage_7 {
         System.out.println("System.out.println(stack.pop());");
         System.out.println("System.out.println(stack.pop());");
         System.out.println("---");
-
         System.out.print("Your answer (separate lines with commas): ");
-        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim();
+
+        // Simulate the actual execution
         TestStack<String> stack = new TestStack<>();
         stack.push("first");
         stack.push("second");
@@ -69,29 +70,8 @@ public class stage_7 {
         String result4 = stack.pop();
         String actualOutput = result1 + "," + result2 + "," + result3 + "," + result4;
 
-        String explanation = """
-                EXPLANATION:
-                • Stack follows LIFO (Last In, First Out) principle
-                • push() adds elements to the top of the stack
-                • pop() removes and returns the top element
-                • peek() returns the top element without removing it
-                • Order: push "first", push "second", push "third"
-                • pop() returns "third", peek() shows "second" (still on stack)
-                • push "fourth", pop() returns "fourth", pop() returns "second"
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("CORRECT! Perfect understanding of stack operations!");
-            score++;
-        } else {
-            System.out.println("Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Stack follows LIFO (Last In, First Out) principle. push() adds elements to the top, pop() removes and returns the top element, peek() returns the top element without removing it. Order: push \"first\", push \"second\", push \"third\" → pop() returns \"third\", peek() shows \"second\" (still on stack) → push \"fourth\", pop() returns \"fourth\", pop() returns \"second\".");
     }
 
     private static void question2() {
@@ -109,9 +89,10 @@ public class stage_7 {
         System.out.println("System.out.println(queue.dequeue());");
         System.out.println("System.out.println(queue.peek());");
         System.out.println("---");
-
         System.out.print("Your answer (separate lines with commas): ");
-        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim();
+
+        // Simulate the actual execution
         TestQueueAs2Stacks<Integer> queue = new TestQueueAs2Stacks<>();
         queue.enqueue(10);
         queue.enqueue(20);
@@ -122,28 +103,8 @@ public class stage_7 {
         int result3 = queue.peek();
         String actualOutput = result1 + "," + result2 + "," + result3;
 
-        String explanation = """
-                EXPLANATION:
-                • Queue follows FIFO (First In, First Out) principle
-                • QueueAs2Stacks uses two stacks to simulate queue behavior
-                • enqueue() moves all elements to auxiliary stack, adds new element, moves back
-                • This ensures the first element added is always at the top of main stack
-                • dequeue() removes from main stack (which has oldest element on top)
-                • Order: enqueue 10,20,30 → dequeue 10 → enqueue 40 → dequeue 20 → peek 30
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("CORRECT! Excellent understanding of queue implementation!");
-            score++;
-        } else {
-            System.out.println("Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Queue follows FIFO (First In, First Out) principle. QueueAs2Stacks uses two stacks to simulate queue behavior. enqueue() moves all elements to auxiliary stack, adds new element, moves back. This ensures the first element added is always at the top of main stack. dequeue() removes from main stack (which has oldest element on top). Order: enqueue 10,20,30 → dequeue 10 → enqueue 40 → dequeue 20 → peek 30.");
     }
 
     private static void question3() {
@@ -160,9 +121,10 @@ public class stage_7 {
         System.out.println("System.out.println(set.remove(\"apple\"));");
         System.out.println("System.out.println(set.size());");
         System.out.println("---");
-
         System.out.print("Your answer (separate lines with commas): ");
-        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim();
+
+        // Simulate the actual execution
         TestSet<String> set = new TestSet<>();
         boolean result1 = set.add("apple");
         boolean result2 = set.add("banana");
@@ -174,28 +136,8 @@ public class stage_7 {
         String actualOutput = result1 + "," + result2 + "," + result3 + "," +
                 result4 + "," + result5 + "," + result6 + "," + result7;
 
-        String explanation = """
-                EXPLANATION:
-                • Set is a collection that contains no duplicate elements
-                • add() returns true if element was added, false if already present
-                • Sets maintain uniqueness - adding "apple" twice only stores it once
-                • contains() checks if element exists in the set
-                • remove() returns true if element was removed, false if not found
-                • size() returns the number of unique elements in the set
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("CORRECT! Great understanding of set uniqueness properties!");
-            score++;
-        } else {
-            System.out.println("Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Set is a collection that contains no duplicate elements. add() returns true if element was added, false if already present. Sets maintain uniqueness - adding \"apple\" twice only stores it once. contains() checks if element exists in the set. remove() returns true if element was removed, false if not found. size() returns the number of unique elements in the set.");
     }
 
     private static void question4() {
@@ -212,9 +154,10 @@ public class stage_7 {
         System.out.println("System.out.println(\"Size: \" + list.size());");
         System.out.println("System.out.println(list.get(0) + \",\" + list.get(3));");
         System.out.println("---");
-
         System.out.print("Your answer (separate lines with commas): ");
-        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim();
+
+        // Simulate the actual execution
         TestDynamicArray<Integer> list = new TestDynamicArray<>(2);
         list.add(10);
         list.add(20);
@@ -225,28 +168,8 @@ public class stage_7 {
         String result3 = list.get(0) + "," + list.get(3);
         String actualOutput = result1 + "," + result2 + "," + result3;
 
-        String explanation = """
-                EXPLANATION:
-                • DynamicArray starts with initial capacity but can grow as needed
-                • When capacity is exceeded, array is resized (usually doubled)
-                • Elements are copied to new larger array, maintaining order
-                • get() accesses elements by index (0-based)
-                • Dynamic resizing allows unlimited additions while maintaining O(1) access
-                • This is the foundation of ArrayList and similar collections
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("CORRECT! Excellent understanding of dynamic array behavior!");
-            score++;
-        } else {
-            System.out.println("Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: DynamicArray starts with initial capacity but can grow as needed. When capacity is exceeded, array is resized (usually doubled). Elements are copied to new larger array, maintaining order. get() accesses elements by index (0-based). Dynamic resizing allows unlimited additions while maintaining O(1) access. This is the foundation of ArrayList and similar collections.");
     }
 
     private static void question5() {
@@ -264,9 +187,10 @@ public class stage_7 {
         System.out.println("}");
         System.out.println("System.out.println();");
         System.out.println("---");
-
         System.out.print("Your answer: ");
-        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim();
+
+        // Simulate the actual execution
         TestDynamicArray<String> list = new TestDynamicArray<>(10);
         list.add("A");
         list.add("B");
@@ -276,28 +200,8 @@ public class stage_7 {
             actualOutput += list.get(i);
         }
 
-        String explanation = """
-                EXPLANATION:
-                • Iterator pattern provides a way to traverse collections without exposing structure
-                • hasNext() returns true if there are more elements to iterate over
-                • next() returns the next element and advances the iterator position
-                • Iterator moves through elements in order: A, B, C
-                • This pattern is fundamental to Java's for-each loops and collection traversal
-                • Allows uniform access to different data structures (arrays, linked lists, etc.)
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("CORRECT! Perfect understanding of iterator pattern!");
-            score++;
-        } else {
-            System.out.println("Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Iterator pattern provides a way to traverse collections without exposing structure. hasNext() returns true if there are more elements to iterate over. next() returns the next element and advances the iterator position. Iterator moves through elements in order: A, B, C. This pattern is fundamental to Java's for-each loops and collection traversal. Allows uniform access to different data structures (arrays, linked lists, etc.).");
     }
 
     private static void question6() {
@@ -314,9 +218,10 @@ public class stage_7 {
         System.out.println("System.out.println(q1.dequeue() == q2.dequeue());");
         System.out.println("System.out.println(q1.peek() == q2.peek());");
         System.out.println("---");
-
         System.out.print("Your answer (separate lines with commas): ");
-        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim();
+
+        // Simulate the actual execution
         TestQueueAs2Stacks<Integer> q1 = new TestQueueAs2Stacks<>();
         TestQueueAs2Stacks<Integer> q2 = new TestQueueAs2Stacks<>();
         q1.enqueue(5);
@@ -327,28 +232,8 @@ public class stage_7 {
         boolean result2 = (q1.peek().equals(q2.peek()));
         String actualOutput = result1 + "," + result2;
 
-        String explanation = """
-                EXPLANATION:
-                • Both classes implement the same Queue interface with identical behavior
-                • Abstract data types define what operations do, not how they're implemented
-                • QueueAsLinkedList and QueueAs2Stacks have different internal implementations
-                • But both follow FIFO ordering, so they produce identical results
-                • This demonstrates polymorphism - same interface, different implementations
-                • Client code works with either implementation transparently
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("CORRECT! Excellent understanding of polymorphism and ADTs!");
-            score++;
-        } else {
-            System.out.println("Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Both classes implement the same Queue interface with identical behavior. Abstract data types define what operations do, not how they're implemented. QueueAsLinkedList and QueueAs2Stacks have different internal implementations. But both follow FIFO ordering, so they produce identical results. This demonstrates polymorphism - same interface, different implementations. Client code works with either implementation transparently.");
     }
 
     private static void question7() {
@@ -366,9 +251,10 @@ public class stage_7 {
         System.out.println("System.out.println(\"Processing: \" + queue.dequeue());");
         System.out.println("System.out.println(\"Remaining: \" + (queue.isEmpty() ? 0 : \"some\"));");
         System.out.println("---");
-
         System.out.print("Your answer (separate lines with commas): ");
-        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim();
+
+        // Simulate the actual execution
         TestQueueAs2Stacks<String> queue = new TestQueueAs2Stacks<>();
         queue.enqueue("task1");
         queue.enqueue("task2");
@@ -380,28 +266,8 @@ public class stage_7 {
         String result4 = "Remaining: " + (queue.isEmpty() ? 0 : "some");
         String actualOutput = result1 + "," + result2 + "," + result3 + "," + result4;
 
-        String explanation = """
-                EXPLANATION:
-                • Queue simulates a task processing system with FIFO ordering
-                • enqueue() adds tasks to the back of the queue
-                • dequeue() removes and processes tasks from the front
-                • peek() shows the next task without removing it
-                • After processing task1 and task2, task3 and task4 remain in queue
-                • isEmpty() would return false since tasks remain, so output is "some"
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("CORRECT! Outstanding understanding of queue applications!");
-            score++;
-        } else {
-            System.out.println("Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Queue simulates a task processing system with FIFO ordering. enqueue() adds tasks to the back of the queue. dequeue() removes and processes tasks from the front. peek() shows the next task without removing it. After processing task1 and task2, task3 and task4 remain in queue. isEmpty() would return false since tasks remain, so output is \"some\".");
     }
 
     private static void question8() {
@@ -418,9 +284,10 @@ public class stage_7 {
         System.out.println("System.out.println(intStack.pop() + strStack.pop());");
         System.out.println("System.out.println(intStack.peek() + \" \" + strStack.peek());");
         System.out.println("---");
-
         System.out.print("Your answer (separate lines with commas): ");
-        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim();
+
+        // Simulate the actual execution
         TestStack<Integer> intStack = new TestStack<>();
         TestStack<String> strStack = new TestStack<>();
         intStack.push(42);
@@ -431,29 +298,8 @@ public class stage_7 {
         String result2 = intStack.peek() + " " + strStack.peek();
         String actualOutput = result1 + "," + result2;
 
-        String explanation = """
-                EXPLANATION:
-                • Generics provide compile-time type safety for collections
-                • Stack<Integer> can only store Integer objects
-                • Stack<String> can only store String objects
-                • Type parameters prevent ClassCastException at runtime
-                • String concatenation: integer 24 + string "world" = "24world"
-                • Both stacks maintain their LIFO ordering independently
-                • This demonstrates how generics enable type-safe collections
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("CORRECT! Perfect mastery of generics and type safety!");
-            score++;
-        } else {
-            System.out.println("Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Generics provide compile-time type safety for collections. Stack<Integer> can only store Integer objects. Stack<String> can only store String objects. Type parameters prevent ClassCastException at runtime. String concatenation: integer 24 + string \"world\" = \"24world\". Both stacks maintain their LIFO ordering independently. This demonstrates how generics enable type-safe collections.");
     }
 
     private static void showFinalResults() {
@@ -487,13 +333,29 @@ public class stage_7 {
         System.out.println("• Practice tracing through complex operations step by step");
         System.out.println("• Understand how generics provide compile-time type safety");
         System.out.println("• Learn to analyze time and space complexity of operations");
-
         System.out.println("\nThese concepts are from your oop abstract data structures folder!");
         System.out.println("Explore: Stack.java, Queue.java, Set.java, DynamicArray.java");
         System.out.println("Advanced: QueueAs2Stacks.java, Iterator implementations");
         System.out.println("\nCongratulations on mastering advanced Java data structures!");
         System.out.println("You're now ready for algorithm design and complex system architecture!");
-    } // Helper classes for simulating the data structure examples
+    }
+
+    private static void checkAnswer(String userGuess, String actualOutput, String explanation) {
+        System.out.println("\nActual output: " + actualOutput);
+
+        if (userGuess.equals(actualOutput)) {
+            System.out.println("✅ CORRECT! Excellent understanding!");
+            score++;
+        } else {
+            System.out.println("❌ Incorrect. Your guess was: " + userGuess);
+        }
+
+        System.out.println(explanation);
+        System.out.println("\nPress Enter to continue...");
+        scanner.nextLine();
+    }
+
+    // Helper classes for simulating the data structure examples
 
     static class TestStack<T> {
         private Object[] data;

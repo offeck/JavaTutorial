@@ -244,34 +244,13 @@ public class stage_3 {
         System.out.println("---");
 
         System.out.print("Your answer: ");
-        String userGuess = scanner.nextLine().trim();
-
-        // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
         int[] array = { 4, 2, 7, 1, 3 };
         insertionSortSimulation(array);
         String actualOutput = java.util.Arrays.toString(array);
 
-        String explanation = """
-                EXPLANATION:
-                • Insertion sort builds a sorted portion from left to right
-                • Starting with index 1, each element is inserted into its correct position
-                • Step by step: {4,2,7,1,3} → {2,4,7,1,3} → {2,4,7,1,3} → {1,2,4,7,3} → {1,2,3,4,7}
-                • Elements are shifted right to make room for the inserted element
-                • Time complexity: O(n²) worst case, O(n) best case (already sorted)
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("✅ CORRECT! Excellent understanding of insertion sort!");
-            score++;
-        } else {
-            System.out.println("❌ Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Insertion sort builds a sorted portion from left to right. Starting with index 1, each element is inserted into its correct position. Step by step: {4,2,7,1,3} → {2,4,7,1,3} → {2,4,7,1,3} → {1,2,4,7,3} → {1,2,3,4,7}. Elements are shifted right to make room for the inserted element. Time complexity: O(n²) worst case, O(n) best case (already sorted).");
     }
 
     private static void question7() {
@@ -293,32 +272,11 @@ public class stage_3 {
         System.out.println("---");
 
         System.out.print("Your answer: ");
-        String userGuess = scanner.nextLine().trim();
-
-        // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
         String actualOutput = caesarEncrypt("HELLO", 3);
 
-        String explanation = """
-                EXPLANATION:
-                • Caesar cipher shifts each letter by a fixed number of positions
-                • H (pos 7) + 3 = K (pos 10), E (pos 4) + 3 = H (pos 7)
-                • L (pos 11) + 3 = O (pos 14), L + 3 = O, O (pos 14) + 3 = R (pos 17)
-                • The modulo 26 ensures wrapping around the alphabet (Z + 1 = A)
-                • This is a simple substitution cipher used since ancient Rome
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("✅ CORRECT! Great understanding of character arithmetic and encryption!");
-            score++;
-        } else {
-            System.out.println("❌ Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Caesar cipher shifts each letter by a fixed number of positions. H (pos 7) + 3 = K (pos 10), E (pos 4) + 3 = H (pos 7). L (pos 11) + 3 = O (pos 14), L + 3 = O, O (pos 14) + 3 = R (pos 17). The modulo 26 ensures wrapping around the alphabet (Z + 1 = A). This is a simple substitution cipher used since ancient Rome.");
     }
 
     private static void question8() {
@@ -347,32 +305,11 @@ public class stage_3 {
         System.out.println("---");
 
         System.out.print("Your answer: ");
-        String userGuess = scanner.nextLine().trim();
-
-        // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
         int actualOutput = romanToDecimal("XIV");
 
-        String explanation = """
-                EXPLANATION:
-                • Roman numerals use subtraction when smaller numeral precedes larger
-                • XIV: X=10, I=1, V=5
-                • Process: X(10) ≥ I(1), so add X=10, result=10
-                • Next: I(1) < V(5), so add (V-I) = 5-1 = 4, skip V, result=10+4=14
-                • This handles special cases like IV=4, IX=9, XL=40, etc.
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(String.valueOf(actualOutput))) {
-            System.out.println("✅ CORRECT! Excellent understanding of Roman numeral logic!");
-            score++;
-        } else {
-            System.out.println("❌ Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, String.valueOf(actualOutput),
+                "EXPLANATION: Roman numerals use subtraction when smaller numeral precedes larger. XIV: X=10, I=1, V=5. Process: X(10) ≥ I(1), so add X=10, result=10. Next: I(1) < V(5), so add (V-I) = 5-1 = 4, skip V, result=10+4=14. This handles special cases like IV=4, IX=9, XL=40, etc.");
     }
 
     private static void question9() {
@@ -398,33 +335,11 @@ public class stage_3 {
         System.out.println("---");
 
         System.out.print("Your answer: ");
-        String userGuess = scanner.nextLine().trim();
-
-        // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
         int actualOutput = baseConversion("0xFF");
 
-        String explanation = """
-                EXPLANATION:
-                • Hexadecimal uses base 16: digits 0-9 and letters A-F (A=10, B=11, ..., F=15)
-                • 0xFF means hex number FF (prefix 0x indicates hexadecimal)
-                • Processing right to left: F=15, F=15
-                • F * 16^0 = 15 * 1 = 15, F * 16^1 = 15 * 16 = 240
-                • Total: 15 + 240 = 255
-                • This is how computers internally convert hex to decimal
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(String.valueOf(actualOutput))) {
-            System.out.println("✅ CORRECT! Perfect understanding of base conversion!");
-            score++;
-        } else {
-            System.out.println("❌ Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, String.valueOf(actualOutput),
+                "EXPLANATION: Hexadecimal uses base 16: digits 0-9 and letters A-F (A=10, B=11, ..., F=15). 0xFF means hex number FF (prefix 0x indicates hexadecimal). Processing right to left: F=15, F=15. F * 16^0 = 15 * 1 = 15, F * 16^1 = 15 * 16 = 240. Total: 15 + 240 = 255. This is how computers internally convert hex to decimal.");
     }
 
     private static void question10() {
@@ -449,35 +364,13 @@ public class stage_3 {
         System.out.println("---");
 
         System.out.print("Your answer: ");
-        String userGuess = scanner.nextLine().trim();
-
-        // Simulate the actual execution
+        String userGuess = scanner.nextLine().trim(); // Simulate the actual execution
         int[] arr = { 3, 1, 4, 2 };
         selectionSortSimulation(arr);
         String actualOutput = java.util.Arrays.toString(arr);
 
-        String explanation = """
-                EXPLANATION:
-                • Selection sort finds the minimum element and swaps it to the front
-                • Round 1: min(3,1,4,2)=1 at index 1, swap with index 0: {1,3,4,2}
-                • Round 2: min(3,4,2)=2 at index 3, swap with index 1: {1,2,4,3}
-                • Round 3: min(4,3)=3 at index 3, swap with index 2: {1,2,3,4}
-                • Each pass guarantees one more element is in its final position
-                • Time complexity: O(n²) for all cases (consistent performance)
-                """;
-
-        System.out.println("Expected output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("✅ CORRECT! Outstanding understanding of selection sort!");
-            score++;
-        } else {
-            System.out.println("❌ Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
+        checkAnswer(userGuess, actualOutput,
+                "EXPLANATION: Selection sort finds the minimum element and swaps it to the front. Round 1: min(3,1,4,2)=1 at index 1, swap with index 0: {1,3,4,2}. Round 2: min(3,4,2)=2 at index 3, swap with index 1: {1,2,4,3}. Round 3: min(4,3)=3 at index 3, swap with index 2: {1,2,3,4}. Each pass guarantees one more element is in its final position. Time complexity: O(n²) for all cases (consistent performance).");
     }
 
     private static void checkAnswer(String userGuess, String actualOutput, String explanation) {
