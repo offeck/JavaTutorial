@@ -78,7 +78,7 @@ public class exam221b_stage {
 
         Supplier<String> exec = () -> {
             java.util.List<Integer> nums = java.util.Arrays.asList(3, 1, 4, 2);
-            java.util.List<Integer> result = sort(nums);
+            List<Integer> result = sort(nums);
             return result.toString();
         };
 
