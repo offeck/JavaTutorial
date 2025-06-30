@@ -26,7 +26,7 @@ Students are presented with Java code snippets and must predict their output. Af
 | **Stage 5** | Object-Oriented Programming | Classes, objects, inheritance, encapsulation               |
 | **Stage 6** | OOP & Inheritance           | Advanced OOP concepts, polymorphism, abstract classes      |
 | **Stage 7** | Advanced Data Structures    | Stacks, queues, sets, abstract data types                  |
-| **Exam Stage** | Past Exam Topics           | Mixed questions from intro221a exam |
+| **Exam221a Stage** | Past Exam Topics           | Mixed questions from intro221a exam |
 | **Exam 221B Stage** | Past Exam Topics B        | Questions from intro221b exam |
 
 ### Stage Progression
@@ -53,6 +53,7 @@ stages/
 ├── stage_5.java              # Object-oriented programming
 ├── stage_6.java              # OOP and inheritance
 ├── stage_7.java              # Advanced data structures
+├── exam221a_stage.java       # Past exam questions
 └── play_game.bat             # Windows batch file to run stages
 ```
 
@@ -182,7 +183,7 @@ Each stage is designed around specific learning objectives:
 - Set operations and uniqueness
 - Iterator pattern usage
 
-#### **Exam Stage: Past Exam Topics**
+#### **Exam221a Stage: Past Exam Topics**
 
 - Review graph partitions and edge checks
 - Balanced parentheses counting
