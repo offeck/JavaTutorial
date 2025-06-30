@@ -27,6 +27,7 @@ Students are presented with Java code snippets and must predict their output. Af
 | **Stage 6** | OOP & Inheritance           | Advanced OOP concepts, polymorphism, abstract classes      |
 | **Stage 7** | Advanced Data Structures    | Stacks, queues, sets, abstract data types                  |
 | **Exam221a Stage** | Past Exam Topics           | Mixed questions from intro221a exam |
+| **Exam 221B Stage** | Past Exam Topics B        | Questions from intro221b exam |
 
 ### Stage Progression
 
@@ -188,6 +189,13 @@ Each stage is designed around specific learning objectives:
 - Balanced parentheses counting
 - String number manipulations
 - Circular buffer logic
+
+#### **Exam 221B Stage: Past Exam Topics**
+
+- Queue-based stack implementation
+- Merge sort on lists
+- Gradual sequence validation
+- Recursion for sequence existence
 
 ### Assessment Methodology
 
