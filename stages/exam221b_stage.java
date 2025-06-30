@@ -145,10 +145,10 @@ public class exam221b_stage {
         }
     }
 
-    private static List<Integer>[] split(List<Integer> elements) {
-        List<Integer>[] answer = new List[2];
-        answer[0] = new LinkedList<>();
-        answer[1] = new LinkedList<>();
+    private static java.util.LinkedList<Integer>[] split(java.util.List<Integer> elements) {
+        java.util.LinkedList<Integer>[] answer = new java.util.LinkedList[2];
+        answer[0] = new java.util.LinkedList<Integer>();
+        answer[1] = new java.util.LinkedList<Integer>();
         Iterator<Integer> it = elements.iterator();
         int i = 0;
         while (it.hasNext()) {
@@ -199,7 +199,7 @@ public class exam221b_stage {
         return answer;
     }
 
-    public static List<Integer> sort(List<Integer> elements) {
+    public static List<Integer> sort(java.util.List<Integer> elements) {
         List<Integer> answer;
         if (elements.size() == 0) {
             answer = new LinkedList<>();
@@ -207,7 +207,7 @@ public class exam221b_stage {
             answer = new LinkedList<>();
             answer.add(elements.get(0));
         } else {
-            List[] split = split(elements);
+            java.util.LinkedList<Integer>[] split = split(elements);
             answer = merge(sort(split[0]), sort(split[1]));
         }
         return answer;
