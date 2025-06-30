@@ -77,7 +77,7 @@ public class exam221b_stage {
         };
 
         Supplier<String> exec = () -> {
-            java.util.List<Integer> nums = java.util.Arrays.asList(3,1,4,2);
+            java.util.List<Integer> nums = java.util.Arrays.asList(3, 1, 4, 2);
             java.util.List<Integer> result = sort(nums);
             return result.toString();
         };
@@ -94,7 +94,7 @@ public class exam221b_stage {
                 "System.out.println(isGradual(arr, 3));"
         };
 
-        Supplier<String> exec = () -> String.valueOf(isGradual(new int[] {0,1,2}, 3));
+        Supplier<String> exec = () -> String.valueOf(isGradual(new int[] { 0, 1, 2 }, 3));
 
         String explanation = "EXPLANATION: Each step changes by at most 1 and the sum equals 3, so the sequence is gradual.";
 
