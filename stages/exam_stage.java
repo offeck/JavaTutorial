@@ -32,7 +32,7 @@ public class exam_stage {
 
         Question.showFinalResults(score, totalQuestions, "EXAM STAGE", concepts, tips,
                 "These problems mirror concepts from the exam solutions.",
-                new String[]{""}, new String[]{},
+                new String[] { "" }, new String[] {},
                 "Great job working through these past exam topics!");
     }
 
@@ -46,16 +46,23 @@ public class exam_stage {
 
     private static Question createQuestion1() {
         String[] code = {
-                "Set<Integer> setA = new HashSet<>(Arrays.asList(0,2));",
-                "Set<Integer> setB = new HashSet<>(Arrays.asList(1));",
+                "java.util.Set<Integer> setA = new java.util.HashSet<Integer>();",
+                "setA.add(0); setA.add(2);",
+                "java.util.Set<Integer> setB = new java.util.HashSet<Integer>();",
+                "setB.add(1);",
                 "Edge[] edges = { new Edge(0,1), new Edge(1,2) };",
                 "System.out.println(runAlgorithm(3, setA, setB, edges));"
         };
 
         Supplier<String> exec = () -> {
-            Set<Integer> setA = new HashSet<>(Arrays.asList(0,2));
-            Set<Integer> setB = new HashSet<>(Arrays.asList(1));
-            Edge[] edges = { new Edge(0,1), new Edge(1,2) };
+            java.util.Set<Integer> setA = new java.util.HashSet<Integer>();
+            setA.add(0);
+            setA.add(2);
+
+            java.util.Set<Integer> setB = new java.util.HashSet<Integer>();
+            setB.add(1);
+
+            Edge[] edges = { new Edge(0, 1), new Edge(1, 2) };
             boolean result = runAlgorithm(3, setA, setB, edges);
             return String.valueOf(result);
         };
@@ -131,26 +138,32 @@ public class exam_stage {
 
     // ===== Helper methods and classes =====
 
-    private static boolean isPartition(int n, Set<Integer> a, Set<Integer> b) {
-        if (a.size() + b.size() != n) return false;
+    private static boolean isPartition(int n, java.util.Set<Integer> a, java.util.Set<Integer> b) {
+        if (a.size() + b.size() != n)
+            return false;
         boolean[] seen = new boolean[n];
         for (int e : a) {
-            if (e < 0 || e >= n || seen[e]) return false;
+            if (e < 0 || e >= n || seen[e])
+                return false;
             seen[e] = true;
         }
         for (int e : b) {
-            if (e < 0 || e >= n || seen[e]) return false;
+            if (e < 0 || e >= n || seen[e])
+                return false;
             seen[e] = true;
         }
         return true;
     }
 
-    private static boolean runAlgorithm(int n, Set<Integer> a, Set<Integer> b, Edge[] edges) {
-        if (!isPartition(n, a, b)) return false;
+    private static boolean runAlgorithm(int n, java.util.Set<Integer> a, java.util.Set<Integer> b, Edge[] edges) {
+        if (!isPartition(n, a, b))
+            return false;
         boolean[] partition = new boolean[n];
-        for (int v : b) partition[v] = true;
+        for (int v : b)
+            partition[v] = true;
         for (Edge e : edges) {
-            if (partition[e.left] == partition[e.right]) return false;
+            if (partition[e.left] == partition[e.right])
+                return false;
         }
         return true;
     }
@@ -158,9 +171,12 @@ public class exam_stage {
     private static boolean isBalanced(String s) {
         int balance = 0;
         for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '(') balance++;
-            else balance--;
-            if (balance < 0) return false;
+            if (s.charAt(i) == '(')
+                balance++;
+            else
+                balance--;
+            if (balance < 0)
+                return false;
         }
         return balance == 0;
     }
@@ -170,7 +186,8 @@ public class exam_stage {
     }
 
     private static String decimalAddDigit(String s, int digit, int carry) {
-        if (s.isEmpty()) return "" + (digit + carry);
+        if (s.isEmpty())
+            return "" + (digit + carry);
         int sum = (s.charAt(0) - '0') + digit + carry;
         int newDigit = sum % 10;
         int newCarry = sum / 10;
@@ -191,12 +208,14 @@ public class exam_stage {
         void insert(E element) {
             elements[index] = element;
             index = (index + 1) % elements.length;
-            if (size < elements.length) size++;
+            if (size < elements.length)
+                size++;
         }
 
         @SuppressWarnings("unchecked")
         E remove() {
-            if (size == 0) throw new NoSuchElementException();
+            if (size == 0)
+                throw new NoSuchElementException();
             int len = elements.length;
             int removeIndex = (len - size + index) % len;
             E removed = (E) elements[removeIndex];
@@ -208,6 +227,10 @@ public class exam_stage {
     static class Edge {
         int left;
         int right;
-        Edge(int l, int r) { left = l; right = r; }
+
+        Edge(int l, int r) {
+            left = l;
+            right = r;
+        }
     }
 }
