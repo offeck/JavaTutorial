@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.function.Supplier;
 
 public class stage_6 {
     private static Scanner scanner = new Scanner(System.in);
@@ -12,65 +13,55 @@ public class stage_6 {
                 "This stage focuses on inheritance, polymorphism, generics, and advanced object interactions.");
         System.out.println("Think about method overriding, super calls, and dynamic dispatch!\n");
 
-        // Question 1: Inheritance and super calls
-        question1();
-
-        // Question 2: Method overriding and polymorphism
-        question2();
-
-        // Question 3: Generic classes and type safety
-        question3();
-
-        // Question 4: Linked list operations
-        question4();
-        // Question 5: Interface inheritance and generic wildcards
-        question5();
-        
-        // Question 6: Binary Tree Operations
-        question6();
-        
-        // Question 7: Stack Implementation
-        question7();
-        
-        // Question 8: Binary Search Tree
-        question8();
+        // Execute all questions using the Question framework
+        executeQuestion(createQuestion1());
+        executeQuestion(createQuestion2());
+        executeQuestion(createQuestion3());
+        executeQuestion(createQuestion4());
+        executeQuestion(createQuestion5());
+        executeQuestion(createQuestion6());
+        executeQuestion(createQuestion7());
+        executeQuestion(createQuestion8());
 
         // Show final results
         showFinalResults();
     }
 
-    private static void question1() {
+    private static void executeQuestion(Question question) {
         totalQuestions++;
-        System.out.println("QUESTION 1: Inheritance and Super Calls");
-        System.out.println("What will this code output?");
-        System.out.println("---");
-        System.out.println("class Rectangle {");
-        System.out.println("    protected double height, width;");
-        System.out.println("    public Rectangle(double height, double width) {");
-        System.out.println("        this.height = height; this.width = width;");
-        System.out.println("    }");
-        System.out.println("    public double area() { return height * width; }");
-        System.out.println("    public double getWidth() { return width; }");
-        System.out.println("}");
-        System.out.println("class Square extends Rectangle {");
-        System.out.println("    public Square(double side) { super(side, side); }");
-        System.out.println("    public double getSide() { return getWidth(); }");
-        System.out.println("}");
-        System.out.println("// Usage:");
-        System.out.println("Square s = new Square(4.0);");
-        System.out.println("System.out.println(s.area());");
-        System.out.println("---");
+        question.execute(scanner, totalQuestions);
+        if (question.wasCorrect()) {
+            score++;
+        }
+    }
 
-        System.out.print("Your guess: ");
-        String userGuess = scanner.nextLine().trim();
+    private static Question createQuestion1() {
+        String[] code = {
+                "class Rectangle {",
+                "    protected double height, width;",
+                "    public Rectangle(double height, double width) {",
+                "        this.height = height; this.width = width;",
+                "    }",
+                "    public double area() { return height * width; }",
+                "    public double getWidth() { return width; }",
+                "}",
+                "class Square extends Rectangle {",
+                "    public Square(double side) { super(side, side); }",
+                "    public double getSide() { return getWidth(); }",
+                "}",
+                "// Usage:",
+                "Square s = new Square(4.0);",
+                "System.out.println(s.area());"
+        };
 
-        // Actual execution from Square.java and Rectangle.java logic
-        TestSquare s = new TestSquare(4.0);
-        double result = s.area();
-        String actualOutput = String.valueOf(result);
+        Supplier<String> execution = () -> {
+            TestSquare s = new TestSquare(4.0);
+            return String.valueOf(s.area());
+        };
 
-        checkAnswer(userGuess, actualOutput,
-                "Explanation: Square extends Rectangle. super(side, side) calls Rectangle constructor with height=4.0, width=4.0. area() returns 4.0 * 4.0 = 16.0.");
+        String explanation = "Explanation: Square extends Rectangle. super(side, side) calls Rectangle constructor with height=4.0, width=4.0. area() returns 4.0 * 4.0 = 16.0.";
+
+        return new Question("Inheritance and Super Calls", code, execution, explanation);
     }
 
     // Helper classes for inheritance simulation
@@ -101,33 +92,28 @@ public class stage_6 {
         }
     }
 
-    private static void question2() {
-        totalQuestions++;
-        System.out.println("\nQUESTION 2: Method Overriding and Polymorphism");
-        System.out.println("What will this code output?");
-        System.out.println("---");
-        System.out.println("class Rectangle {");
-        System.out.println("    public String name() { return \"Rectangle\"; }");
-        System.out.println("}");
-        System.out.println("class Square extends Rectangle {");
-        System.out.println("    @Override");
-        System.out.println("    public String name() { return \"Square\"; }");
-        System.out.println("}");
-        System.out.println("// Usage:");
-        System.out.println("Rectangle r = new Square();");
-        System.out.println("System.out.println(r.name());");
-        System.out.println("---");
+    private static Question createQuestion2() {
+        String[] code = {
+                "class Rectangle {",
+                "    public String name() { return \"Rectangle\"; }",
+                "}",
+                "class Square extends Rectangle {",
+                "    @Override",
+                "    public String name() { return \"Square\"; }",
+                "}",
+                "// Usage:",
+                "Rectangle r = new Square();",
+                "System.out.println(r.name());"
+        };
 
-        System.out.print("Your guess: ");
-        String userGuess = scanner.nextLine().trim();
+        Supplier<String> execution = () -> {
+            TestRectangle2 r = new TestSquare2();
+            return r.name();
+        };
 
-        // Actual execution demonstrating polymorphism
-        TestRectangle2 r = new TestSquare2();
-        String result = r.name();
-        String actualOutput = result;
+        String explanation = "Explanation: Despite r being declared as Rectangle, it points to a Square object. Due to polymorphism, Square's overridden name() method is called, returning \"Square\".";
 
-        checkAnswer(userGuess, actualOutput,
-                "Explanation: Despite r being declared as Rectangle, it points to a Square object. Due to polymorphism, Square's overridden name() method is called, returning \"Square\".");
+        return new Question("Method Overriding and Polymorphism", code, execution, explanation);
     }
 
     // Helper classes for polymorphism simulation
@@ -144,35 +130,30 @@ public class stage_6 {
         }
     }
 
-    private static void question3() {
-        totalQuestions++;
-        System.out.println("\nQUESTION 3: Generic Classes and Type Safety");
-        System.out.println("What will this code output?");
-        System.out.println("---");
-        System.out.println("public class OrderedPair<T1, T2> {");
-        System.out.println("    private final T1 first;");
-        System.out.println("    private final T2 second;");
-        System.out.println("    public OrderedPair(T1 first, T2 second) {");
-        System.out.println("        this.first = first; this.second = second;");
-        System.out.println("    }");
-        System.out.println("    public T1 getFirst() { return this.first; }");
-        System.out.println("    public T2 getSecond() { return this.second; }");
-        System.out.println("}");
-        System.out.println("// Usage:");
-        System.out.println("OrderedPair<String, Integer> pair = new OrderedPair<>(\"Hello\", 42);");
-        System.out.println("System.out.println(pair.getSecond());");
-        System.out.println("---");
+    private static Question createQuestion3() {
+        String[] code = {
+                "public class OrderedPair<T1, T2> {",
+                "    private final T1 first;",
+                "    private final T2 second;",
+                "    public OrderedPair(T1 first, T2 second) {",
+                "        this.first = first; this.second = second;",
+                "    }",
+                "    public T1 getFirst() { return this.first; }",
+                "    public T2 getSecond() { return this.second; }",
+                "}",
+                "// Usage:",
+                "OrderedPair<String, Integer> pair = new OrderedPair<>(\"Hello\", 42);",
+                "System.out.println(pair.getSecond());"
+        };
 
-        System.out.print("Your guess: ");
-        String userGuess = scanner.nextLine().trim();
+        Supplier<String> execution = () -> {
+            TestOrderedPair<String, Integer> pair = new TestOrderedPair<>("Hello", 42);
+            return String.valueOf(pair.getSecond());
+        };
 
-        // Actual execution from OrderedPair.java logic
-        TestOrderedPair<String, Integer> pair = new TestOrderedPair<>("Hello", 42);
-        Integer result = pair.getSecond();
-        String actualOutput = String.valueOf(result);
+        String explanation = "Explanation: OrderedPair is parameterized with <String, Integer>. getSecond() returns the Integer value 42.";
 
-        checkAnswer(userGuess, actualOutput,
-                "Explanation: OrderedPair is parameterized with <String, Integer>. getSecond() returns the Integer value 42.");
+        return new Question("Generic Classes and Type Safety", code, execution, explanation);
     }
 
     // Helper class for generics simulation
@@ -194,37 +175,32 @@ public class stage_6 {
         }
     }
 
-    private static void question4() {
-        totalQuestions++;
-        System.out.println("\nQUESTION 4: Linked List Operations");
-        System.out.println("What will this code output?");
-        System.out.println("---");
-        System.out.println("class Link<E> {");
-        System.out.println("    private E data;");
-        System.out.println("    private Link<E> next;");
-        System.out.println("    public Link(E data, Link<E> next) {");
-        System.out.println("        this.data = data; this.next = next;");
-        System.out.println("    }");
-        System.out.println("    public E getData() { return data; }");
-        System.out.println("    public Link<E> getNext() { return next; }");
-        System.out.println("}");
-        System.out.println("// Usage:");
-        System.out.println("Link<String> second = new Link<>(\"World\", null);");
-        System.out.println("Link<String> first = new Link<>(\"Hello\", second);");
-        System.out.println("System.out.println(first.getNext().getData());");
-        System.out.println("---");
+    private static Question createQuestion4() {
+        String[] code = {
+                "class Link<E> {",
+                "    private E data;",
+                "    private Link<E> next;",
+                "    public Link(E data, Link<E> next) {",
+                "        this.data = data; this.next = next;",
+                "    }",
+                "    public E getData() { return data; }",
+                "    public Link<E> getNext() { return next; }",
+                "}",
+                "// Usage:",
+                "Link<String> second = new Link<>(\"World\", null);",
+                "Link<String> first = new Link<>(\"Hello\", second);",
+                "System.out.println(first.getNext().getData());"
+        };
 
-        System.out.print("Your guess: ");
-        String userGuess = scanner.nextLine().trim();
+        Supplier<String> execution = () -> {
+            TestLink<String> second = new TestLink<>("World", null);
+            TestLink<String> first = new TestLink<>("Hello", second);
+            return first.getNext().getData();
+        };
 
-        // Actual execution from Link.java logic
-        TestLink<String> second = new TestLink<>("World", null);
-        TestLink<String> first = new TestLink<>("Hello", second);
-        String result = first.getNext().getData();
-        String actualOutput = result;
+        String explanation = "Explanation: first.getNext() returns the 'second' link, and second.getData() returns \"World\".";
 
-        checkAnswer(userGuess, actualOutput,
-                "Explanation: first.getNext() returns the 'second' link, and second.getData() returns \"World\".");
+        return new Question("Linked List Operations", code, execution, explanation);
     }
 
     // Helper class for linked list simulation
@@ -246,38 +222,33 @@ public class stage_6 {
         }
     }
 
-    private static void question5() {
-        totalQuestions++;
-        System.out.println("\nQUESTION 5: Interface Inheritance and Generic Bounds");
-        System.out.println("What will this code output?");
-        System.out.println("---");
-        System.out.println("interface List<T> {");
-        System.out.println("    public int size();");
-        System.out.println("    public void add(T element);");
-        System.out.println("}");
-        System.out.println("class LinkedList<T> implements List<T> {");
-        System.out.println("    private int count = 0;");
-        System.out.println("    public int size() { return count; }");
-        System.out.println("    public void add(T element) { count++; }");
-        System.out.println("}");
-        System.out.println("// Usage:");
-        System.out.println("List<String> list = new LinkedList<>();");
-        System.out.println("list.add(\"A\"); list.add(\"B\");");
-        System.out.println("System.out.println(list.size());");
-        System.out.println("---");
+    private static Question createQuestion5() {
+        String[] code = {
+                "interface List<T> {",
+                "    public int size();",
+                "    public void add(T element);",
+                "}",
+                "class LinkedList<T> implements List<T> {",
+                "    private int count = 0;",
+                "    public int size() { return count; }",
+                "    public void add(T element) { count++; }",
+                "}",
+                "// Usage:",
+                "List<String> list = new LinkedList<>();",
+                "list.add(\"A\"); list.add(\"B\");",
+                "System.out.println(list.size());"
+        };
 
-        System.out.print("Your guess: ");
-        String userGuess = scanner.nextLine().trim();
+        Supplier<String> execution = () -> {
+            TestList<String> list = new TestLinkedList<>();
+            list.add("A");
+            list.add("B");
+            return String.valueOf(list.size());
+        };
 
-        // Actual execution from List.java and LinkedList.java logic
-        TestList<String> list = new TestLinkedList<>();
-        list.add("A");
-        list.add("B");
-        int result = list.size();
-        String actualOutput = String.valueOf(result);
+        String explanation = "Explanation: LinkedList implements List interface. Two elements are added, each incrementing count. size() returns 2.";
 
-        checkAnswer(userGuess, actualOutput,
-                "Explanation: LinkedList implements List interface. Two elements are added, each incrementing count. size() returns 2.");
+        return new Question("Interface Inheritance and Generic Bounds", code, execution, explanation);
     }
 
     // Helper interface and class for interface inheritance simulation
@@ -299,40 +270,35 @@ public class stage_6 {
         }
     }
 
-    private static void question6() {
-        totalQuestions++;
-        System.out.println("\nQUESTION 6: Binary Tree Operations");
-        System.out.println("What will this code output?");
-        System.out.println("---");
-        System.out.println("class BinaryNode<T> {");
-        System.out.println("    protected T data;");
-        System.out.println("    protected BinaryNode<T> left, right;");
-        System.out.println("    public BinaryNode(T element) { this.data = element; }");
-        System.out.println("    public T getData() { return data; }");
-        System.out.println("    public BinaryNode<T> getLeft() { return left; }");
-        System.out.println("    public BinaryNode<T> getRight() { return right; }");
-        System.out.println("    public void setLeft(BinaryNode<T> left) { this.left = left; }");
-        System.out.println("    public void setRight(BinaryNode<T> right) { this.right = right; }");
-        System.out.println("}");
-        System.out.println("// Usage:");
-        System.out.println("BinaryNode<String> root = new BinaryNode<>(\"A\");");
-        System.out.println("root.setLeft(new BinaryNode<>(\"B\"));");
-        System.out.println("root.setRight(new BinaryNode<>(\"C\"));");
-        System.out.println("System.out.println(root.getLeft().getData());");
-        System.out.println("---");
-        
-        System.out.print("Your guess: ");
-        String userGuess = scanner.nextLine().trim();
-        
-        // Actual execution from BinaryNode.java logic
-        TestBinaryNode<String> root = new TestBinaryNode<>("A");
-        root.setLeft(new TestBinaryNode<>("B"));
-        root.setRight(new TestBinaryNode<>("C"));
-        String result = root.getLeft().getData();
-        String actualOutput = result;
-        
-        checkAnswer(userGuess, actualOutput, 
-            "Explanation: Binary tree with root 'A', left child 'B', right child 'C'. root.getLeft().getData() returns 'B'.");
+    private static Question createQuestion6() {
+        String[] code = {
+                "class BinaryNode<T> {",
+                "    protected T data;",
+                "    protected BinaryNode<T> left, right;",
+                "    public BinaryNode(T element) { this.data = element; }",
+                "    public T getData() { return data; }",
+                "    public BinaryNode<T> getLeft() { return left; }",
+                "    public BinaryNode<T> getRight() { return right; }",
+                "    public void setLeft(BinaryNode<T> left) { this.left = left; }",
+                "    public void setRight(BinaryNode<T> right) { this.right = right; }",
+                "}",
+                "// Usage:",
+                "BinaryNode<String> root = new BinaryNode<>(\"A\");",
+                "root.setLeft(new BinaryNode<>(\"B\"));",
+                "root.setRight(new BinaryNode<>(\"C\"));",
+                "System.out.println(root.getLeft().getData());"
+        };
+
+        Supplier<String> execution = () -> {
+            TestBinaryNode<String> root = new TestBinaryNode<>("A");
+            root.setLeft(new TestBinaryNode<>("B"));
+            root.setRight(new TestBinaryNode<>("C"));
+            return root.getLeft().getData();
+        };
+
+        String explanation = "Explanation: Binary tree with root 'A', left child 'B', right child 'C'. root.getLeft().getData() returns 'B'.";
+
+        return new Question("Binary Tree Operations", code, execution, explanation);
     }
     
     // Helper class for binary tree simulation
@@ -347,45 +313,40 @@ public class stage_6 {
         public void setRight(TestBinaryNode<T> right) { this.right = right; }
     }
     
-    private static void question7() {
-        totalQuestions++;
-        System.out.println("\nQUESTION 7: Stack Implementation");
-        System.out.println("What will this code output?");
-        System.out.println("---");
-        System.out.println("interface Stack<T> {");
-        System.out.println("    public boolean isEmpty();");
-        System.out.println("    public T peek();");
-        System.out.println("    public T pop();");
-        System.out.println("    public void push(T element);");
-        System.out.println("}");
-        System.out.println("class StackArray<T> implements Stack<T> {");
-        System.out.println("    private List<T> array = new ArrayList<>();");
-        System.out.println("    public boolean isEmpty() { return array.isEmpty(); }");
-        System.out.println("    public void push(T element) { array.add(element); }");
-        System.out.println("    public T pop() { return array.remove(array.size()-1); }");
-        System.out.println("    public T peek() { return array.get(array.size()-1); }");
-        System.out.println("}");
-        System.out.println("// Usage:");
-        System.out.println("Stack<Integer> stack = new StackArray<>();");
-        System.out.println("stack.push(10); stack.push(20); stack.push(30);");
-        System.out.println("stack.pop();");
-        System.out.println("System.out.println(stack.peek());");
-        System.out.println("---");
-        
-        System.out.print("Your guess: ");
-        String userGuess = scanner.nextLine().trim();
-        
-        // Actual execution from Stack.java logic
-        TestStack<Integer> stack = new TestStackArray<>();
-        stack.push(10);
-        stack.push(20); 
-        stack.push(30);
-        stack.pop(); // removes 30
-        Integer result = stack.peek(); // returns 20
-        String actualOutput = String.valueOf(result);
-        
-        checkAnswer(userGuess, actualOutput, 
-            "Explanation: Stack follows LIFO (Last In, First Out). After pushing 10,20,30 and popping once, peek() returns 20.");
+    private static Question createQuestion7() {
+        String[] code = {
+                "interface Stack<T> {",
+                "    public boolean isEmpty();",
+                "    public T peek();",
+                "    public T pop();",
+                "    public void push(T element);",
+                "}",
+                "class StackArray<T> implements Stack<T> {",
+                "    private List<T> array = new ArrayList<>();",
+                "    public boolean isEmpty() { return array.isEmpty(); }",
+                "    public void push(T element) { array.add(element); }",
+                "    public T pop() { return array.remove(array.size()-1); }",
+                "    public T peek() { return array.get(array.size()-1); }",
+                "}",
+                "// Usage:",
+                "Stack<Integer> stack = new StackArray<>();",
+                "stack.push(10); stack.push(20); stack.push(30);",
+                "stack.pop();",
+                "System.out.println(stack.peek());"
+        };
+
+        Supplier<String> execution = () -> {
+            TestStack<Integer> stack = new TestStackArray<>();
+            stack.push(10);
+            stack.push(20);
+            stack.push(30);
+            stack.pop();
+            return String.valueOf(stack.peek());
+        };
+
+        String explanation = "Explanation: Stack follows LIFO (Last In, First Out). After pushing 10,20,30 and popping once, peek() returns 20.";
+
+        return new Question("Stack Implementation", code, execution, explanation);
     }
     
     // Helper interface and class for stack simulation
@@ -404,51 +365,46 @@ public class stage_6 {
         public T peek() { return array.get(array.size()-1); }
     }
     
-    private static void question8() {
-        totalQuestions++;
-        System.out.println("\nQUESTION 8: Binary Search Tree Properties");
-        System.out.println("What will this code output?");
-        System.out.println("---");
-        System.out.println("class BST {");
-        System.out.println("    private Node root;");
-        System.out.println("    class Node {");
-        System.out.println("        int data; Node left, right;");
-        System.out.println("        Node(int data) { this.data = data; }");
-        System.out.println("    }");
-        System.out.println("    public void insert(int value) {");
-        System.out.println("        root = insertRec(root, value);");
-        System.out.println("    }");
-        System.out.println("    private Node insertRec(Node root, int value) {");
-        System.out.println("        if (root == null) return new Node(value);");
-        System.out.println("        if (value < root.data) root.left = insertRec(root.left, value);");
-        System.out.println("        else root.right = insertRec(root.right, value);");
-        System.out.println("        return root;");
-        System.out.println("    }");
-        System.out.println("    public int findMin() { return findMinRec(root); }");
-        System.out.println("    private int findMinRec(Node node) {");
-        System.out.println("        return node.left == null ? node.data : findMinRec(node.left);");
-        System.out.println("    }");
-        System.out.println("}");
-        System.out.println("// Usage:");
-        System.out.println("BST bst = new BST();");
-        System.out.println("bst.insert(50); bst.insert(30); bst.insert(70); bst.insert(20);");
-        System.out.println("System.out.println(bst.findMin());");
-        System.out.println("---");
-        
-        System.out.print("Your guess: ");
-        String userGuess = scanner.nextLine().trim();
-        
-        // Actual execution from BinarySearchTree.java logic
-        TestBST bst = new TestBST();
-        bst.insert(50);
-        bst.insert(30);
-        bst.insert(70);
-        bst.insert(20);
-        int result = bst.findMin();
-        String actualOutput = String.valueOf(result);
-        
-        checkAnswer(userGuess, actualOutput, 
-            "Explanation: BST property: left < root < right. Values inserted: 50,30,70,20. Minimum is always leftmost: 20.");
+    private static Question createQuestion8() {
+        String[] code = {
+                "class BST {",
+                "    private Node root;",
+                "    class Node {",
+                "        int data; Node left, right;",
+                "        Node(int data) { this.data = data; }",
+                "    }",
+                "    public void insert(int value) {",
+                "        root = insertRec(root, value);",
+                "    }",
+                "    private Node insertRec(Node root, int value) {",
+                "        if (root == null) return new Node(value);",
+                "        if (value < root.data) root.left = insertRec(root.left, value);",
+                "        else root.right = insertRec(root.right, value);",
+                "        return root;",
+                "    }",
+                "    public int findMin() { return findMinRec(root); }",
+                "    private int findMinRec(Node node) {",
+                "        return node.left == null ? node.data : findMinRec(node.left);",
+                "    }",
+                "}",
+                "// Usage:",
+                "BST bst = new BST();",
+                "bst.insert(50); bst.insert(30); bst.insert(70); bst.insert(20);",
+                "System.out.println(bst.findMin());"
+        };
+
+        Supplier<String> execution = () -> {
+            TestBST bst = new TestBST();
+            bst.insert(50);
+            bst.insert(30);
+            bst.insert(70);
+            bst.insert(20);
+            return String.valueOf(bst.findMin());
+        };
+
+        String explanation = "Explanation: BST property: left < root < right. Values inserted: 50,30,70,20. Minimum is always leftmost: 20.";
+
+        return new Question("Binary Search Tree", code, execution, explanation);
     }
     
     // Helper class for BST simulation
@@ -477,21 +433,6 @@ public class stage_6 {
         private int findMinRec(TestBSTNode node) {
             return node.left == null ? node.data : findMinRec(node.left);
         }
-    }
-
-    private static void checkAnswer(String userGuess, String actualOutput, String explanation) {
-        System.out.println("\nActual output: " + actualOutput);
-
-        if (userGuess.equals(actualOutput)) {
-            System.out.println("✅ CORRECT! Masterful understanding of advanced OOP!");
-            score++;
-        } else {
-            System.out.println("❌ Incorrect. Your guess was: " + userGuess);
-        }
-
-        System.out.println(explanation);
-        System.out.println("\nPress Enter to continue...");
-        scanner.nextLine();
     }
 
     private static void showFinalResults() {
