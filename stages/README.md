@@ -26,6 +26,7 @@ Students are presented with Java code snippets and must predict their output. Af
 | **Stage 5** | Object-Oriented Programming | Classes, objects, inheritance, encapsulation               |
 | **Stage 6** | OOP & Inheritance           | Advanced OOP concepts, polymorphism, abstract classes      |
 | **Stage 7** | Advanced Data Structures    | Stacks, queues, sets, abstract data types                  |
+| **Exam Stage** | Past Exam Topics           | Mixed questions from intro221a exam |
 
 ### Stage Progression
 
@@ -179,6 +180,13 @@ Each stage is designed around specific learning objectives:
 - Stack and Queue implementations
 - Set operations and uniqueness
 - Iterator pattern usage
+
+#### **Exam Stage: Past Exam Topics**
+
+- Review graph partitions and edge checks
+- Balanced parentheses counting
+- String number manipulations
+- Circular buffer logic
 
 ### Assessment Methodology
 
