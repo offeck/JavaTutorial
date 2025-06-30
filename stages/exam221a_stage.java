@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.function.Supplier;
 
-public class exam_stage {
+public class exam221a_stage {
     private static Scanner scanner = new Scanner(System.in);
     private static int score = 0;
     private static int totalQuestions = 0;
